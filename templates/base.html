@@ -1,0 +1,60 @@
+<!--Basic template for all other pages -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Replaceable title -->
+    {% block head %}
+    <title> {% block title %} Title {% endblock %}  </title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% endblock %}
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Muli');
+      * {font-family: "Muli";}
+      a.navbar-brand {text-decoration: none;}
+    </style>
+  </head>
+
+  <body style="padding-top: 70px">
+    {% block header %}
+    <div>
+      <nav class="navbar fixed-top navbar-dark bg-dark"> 
+        <a href="/" class="navbar-brand" style="color: white; text-decoration: none;"> Tuned Recipes </a>
+        {% if not logged_in %}
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="/login"> Login </a></li>
+          <li class="nav-item"><a href="/register"> Register </a></li>
+        </ul>
+        {% else %}
+        <a href="/profile"> Profile </a>
+        <a href="/userentries"> User Recipes </a>
+        <a href="/addrecipe"> Add Recipe </a>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="/logout"> Logout </a></li>
+        </ul>
+        {% endif %}
+      </nav>
+    </div>
+    {% endblock %}
+
+    <!-- Replaceable body -->
+    {% set msgs = get_flashed_messages() %}
+    {% for each in msgs %}
+
+    <div class="alert alert-primary" role="alert">
+      {{each}}
+    </div>
+    {% endfor %}
+
+    {% block content %}
+    content
+    {% endblock %}
+
+    {% block footer %}
+    <br><br><br>
+    <footer class="page-footer" style="text-decoration: none;">
+      <div class="footer-copyright text-center py-3"> &copy 2018 Copyright: <a href="https://github.com/taniacao12/slowpokeRodriguez"> slowpokeRodriguez </a>
+      </div>
+    </footer>
+    {% endblock %}
+  </body>
+</html>
