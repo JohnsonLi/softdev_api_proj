@@ -1,3 +1,6 @@
+Original : https://github.com/taniacao12/slowpokeRodriguez  
+
+
 # Tuned Recipes
 
 Tuned Recipes is a website that provides recipes tailored to the user's preferences and also recommends music based on the recipe chosen. If the user is registered, their preferences will be saved for future use. While registered users may add recipes, guests will only be able to view recipes and listen to recommended music.
